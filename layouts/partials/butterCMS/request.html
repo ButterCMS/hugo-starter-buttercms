@@ -1,0 +1,5 @@
+{{ $apiKey := site.Params.buttercmsapikey }}
+
+{{ $url := printf "%s/%s&auth_token=%s" "https://api.buttercms.com/v2" . $apiKey }}
+
+{{ return getJSON $url }}
