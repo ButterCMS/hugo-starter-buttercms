@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ .Site.Title }}: {{ .Title }}</title>
-  <link rel="stylesheet" href="/main.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="@ViewBag.Description" />
+  
+  <!-- <meta name="image" content="@ViewBag.Image" />  -->
+
+  <!-- <title>@ViewBag.Title</title> -->
+
+  <link rel="shortcut icon" type="image/x-icon" href="https://buttercms.com/static/v2/images/favicon.png" />
+
+  {{ partial "head/styles.html" . }}
 </head>
 <body>
-  <h1>{{ .Site.Title }}: {{ .Title }}</h1>
-  <ul id="navbar">
-  {{ $currentPage := . }}
-  {{ range .Site.Menus.main }}
-    <li class="{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{ end }}">
-      <a class="pane" href="{{ .URL }}">{{ .Name }}</a>
-    </li>
-  {{ end }}
-  </ul>
+  {{ partial "preloader.html" . }}
+
+  {{ partial "header/header.html" . }}
+
   {{ block "main" . }}
   {{ .Content }}
   {{ end}}
+
   <small>Copyright 2019 Yourname</small>
+
+  <a href="#" class="scroll-top btn-hover">
+    <i class="lni lni-chevron-up"></i>
+  </a>
+
+  {{ partial "head/scripts.html" . }}
 </body>
 </html>
