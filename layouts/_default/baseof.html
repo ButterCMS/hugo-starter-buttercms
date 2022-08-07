@@ -17,7 +17,7 @@
 <body>
   {{ partial "preloader.html" . }}
 
-  {{ partial "header/header.html" . }}
+  {{ partial "header.html" $.Site.Data.header }}
 
   {{ block "main" . }}
   {{ .Content }}

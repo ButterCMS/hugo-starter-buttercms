@@ -16,17 +16,15 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <div class="ms-auto">
                                 <ul id="nav" class="navbar-nav ms-auto">
-                                    {{ $content := partial "header/get_navigation_items.html" . }}
+                                    {{ range $.NavItems }}
+                                      {{ $itemClasses := "page-scroll" }}
+                                      {{ if eq .Url $.defaultActiveItemUrl }}
+                                          {{ $itemClasses = printf "%s %s" $itemClasses "active" }}
+                                      {{ end }}
 
-                                    {{ range $content.data.navigation_menu_item }}
-                                        {{ $itemClasses := "page-scroll" }}
-                                        {{ if eq .url $.Site.Data.header.defaultActiveItemUrl }}
-                                            {{ $itemClasses = printf "%s %s" $itemClasses "active" }}
-                                        {{ end }}
-
-                                        <li class="nav-item">
-                                            <a href="{{ .url }}" class="{{ $itemClasses }}">{{ .label }}</a>
-                                        </li>
+                                      <li class="nav-item">
+                                          <a href="{{ .Url }}" class="{{ $itemClasses }}">{{ .Label }}</a>
+                                      </li>
                                     {{ end }}
                                 </ul>
                             </div>
