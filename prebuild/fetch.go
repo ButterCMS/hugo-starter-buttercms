@@ -11,7 +11,7 @@ import (
 	ButterCMS "github.com/ButterCMS/buttercms-go"
 )
 
-const fileMode = 0644 // TODO check if value is correct
+const fileMode = 0644
 
 const dataPath = "./remote/data"
 
@@ -26,9 +26,8 @@ func fetch() {
 func createFolderIfNotExists(path string) {
 	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
 		err := os.MkdirAll(path, fileMode)
-		if err != nil {
-			HandleErr(err)
-		}
+
+		HandleErr(err)
 	}
 }
 
@@ -42,7 +41,7 @@ func CreateFile(data any, path string) {
 
 func HandleErr(err error) {
 	if err != nil {
-		fmt.Println("Error fetching data: %w", err) // todo change wording
+		fmt.Println("Error fetching data: %w", err)
 
 		os.Exit(1)
 	}
