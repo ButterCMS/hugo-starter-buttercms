@@ -1,0 +1,6 @@
+baseURL: https://buttercms.com
+languageCode: en-us
+title: Hugo ButterCMS starter
+caches:
+  getresource:
+    maxAge: 0

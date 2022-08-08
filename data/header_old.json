@@ -1,9 +1,0 @@
-{
-    "defaultActiveItemUrl": "#home",
-    "items": [
-      {
-        "url": "foo",
-        "label": "home"
-      }
-    ]
-}
