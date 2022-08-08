@@ -15,12 +15,17 @@ const fileMode = 0644
 
 const dataPath = "./remote/data"
 
+const contentPath = "./remote/content"
+
 func fetch() {
 	ButterCMS.SetAuthToken(os.Getenv("BUTTERCMS_API_TOKEN"))
 
 	createFolderIfNotExists(dataPath)
+	createFolderIfNotExists(contentPath)
 
 	CreateHeaderFile(filepath.Join(dataPath, "header.json"))
+
+	CreateLandingPagesFiles(contentPath)
 }
 
 func createFolderIfNotExists(path string) {
@@ -45,4 +50,15 @@ func HandleErr(err error) {
 
 		os.Exit(1)
 	}
+}
+
+func GetValue[T any](input map[string]interface{}, name string) (T, error) {
+	field, ok := input[name].(T)
+
+	if !ok {
+		var null T
+		return null, fmt.Errorf("unable to get property %s from map", name)
+	}
+
+	return field, nil
 }
