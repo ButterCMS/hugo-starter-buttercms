@@ -1,6 +1,0 @@
----
-title: "{{ replace .Name "-" " " | title }}"
-slug: "{{ urlize .Name }}"
----
-
-Default content

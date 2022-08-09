@@ -11,7 +11,7 @@ import (
 	ButterCMS "github.com/ButterCMS/buttercms-go"
 )
 
-const fileMode = 0644
+const fileMode = 0777
 
 const dataPath = "./remote/data"
 
@@ -25,7 +25,9 @@ func fetch() {
 
 	CreateHeaderFile(filepath.Join(dataPath, "header.json"))
 
-	CreateLandingPagesFiles(contentPath)
+	landingPagesPath := filepath.Join(contentPath, "landing_page")
+	createFolderIfNotExists(landingPagesPath)
+	CreateLandingPagesFiles(landingPagesPath)
 }
 
 func createFolderIfNotExists(path string) {

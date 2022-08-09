@@ -13,6 +13,8 @@ type LandingPageSectionBase struct {
 	ScrollAnchorId string
 	Headline       string
 	SubHeadline    string
+
+	IsSet bool
 }
 
 type HeroSection struct {
@@ -70,12 +72,14 @@ func createLandingPageFile(pathToFile string, page ButterCMS.Page) {
 				data.HeroSection.ButtonUrl = buttonUrl
 				data.HeroSection.Image = image
 				data.HeroSection.SubHeadline = subHeadline
+
+				data.HeroSection.IsSet = true
 			}
 
 		}
 	}
 
-	fmt.Printf("\n page: %v", data)
+	// fmt.Printf("\n page: %v", data)
 
 	if defaultLandingPageSlug == page.Slug {
 		CreateFile(data, filepath.Join(pathToFile, "_index.md"))

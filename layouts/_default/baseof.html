@@ -19,6 +19,8 @@
 
   {{ partial "header.html" $.Site.Data.header }}
 
+  {{/*  {{ printf "%v" .Params }}  */}}
+
   {{ block "main" . }}
   {{ .Content }}
   {{ end}}
