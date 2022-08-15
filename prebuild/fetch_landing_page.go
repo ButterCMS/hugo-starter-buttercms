@@ -13,8 +13,7 @@ type LandingPageSectionBase struct {
 	ScrollAnchorId string
 	Headline       string
 	SubHeadline    string
-
-	IsSet bool
+	IsSet          bool
 }
 
 type HeroSection struct {
@@ -25,6 +24,12 @@ type HeroSection struct {
 	Image       string
 }
 
+type ImageWithTextSection struct {
+	HeroSection
+
+	ImagePosition string
+}
+
 type SEOMetadata struct {
 	Title       string
 	Description string
@@ -33,7 +38,9 @@ type SEOMetadata struct {
 type LandingPageFile struct {
 	SEOMetadata
 
-	HeroSection HeroSection
+	HeroSection  HeroSection
+	AboutSection ImageWithTextSection
+	TryIt        ImageWithTextSection
 }
 
 func FetchLandingPages(pathToFiles string) {
@@ -59,21 +66,14 @@ func processLandingPage(pathToFile string, page ButterCMS.Page) {
 			scrollAnchorId, _ := getSectionFieldsValue[string](section, "scroll_anchor_id")
 			headline, _ := getSectionFieldsValue[string](section, "headline")
 
+			fmt.Printf("\n%s", scrollAnchorId)
 			switch scrollAnchorId {
-			case "#home":
-				buttonLabel, _ := getSectionFieldsValue[string](section, "button_label")
-				buttonUrl, _ := getSectionFieldsValue[string](section, "button_url")
-				image, _ := getSectionFieldsValue[string](section, "image")
-				subHeadline, _ := getSectionFieldsValue[string](section, "subheadline")
-
-				data.HeroSection.Headline = headline
-				data.HeroSection.ScrollAnchorId = scrollAnchorId
-				data.HeroSection.ButtonLabel = buttonLabel
-				data.HeroSection.ButtonUrl = buttonUrl
-				data.HeroSection.Image = image
-				data.HeroSection.SubHeadline = subHeadline
-
-				data.HeroSection.IsSet = true
+			case "home":
+				data.HeroSection = processHeroSection(section, headline, scrollAnchorId)
+			case "about":
+				data.AboutSection = processImageWithTextSection(section, headline, scrollAnchorId)
+			case "tryit":
+				data.TryIt = processImageWithTextSection(section, headline, scrollAnchorId)
 			}
 
 		}
@@ -84,6 +84,38 @@ func processLandingPage(pathToFile string, page ButterCMS.Page) {
 	}
 
 	CreateFile(data, filepath.Join(pathToFile, fmt.Sprintf("%s.md", page.Slug)))
+}
+
+func processImageWithTextSection(section map[string]interface{}, headline string, scrollAnchorId string) ImageWithTextSection {
+	heroSection := processHeroSection(section, headline, scrollAnchorId)
+
+	imagePosition, _ := getSectionFieldsValue[string](section, "image_position")
+
+	return ImageWithTextSection{
+		HeroSection: heroSection,
+
+		ImagePosition: imagePosition,
+	}
+}
+
+func processHeroSection(section map[string]interface{}, headline string, scrollAnchorId string) HeroSection {
+	buttonLabel, _ := getSectionFieldsValue[string](section, "button_label")
+	buttonUrl, _ := getSectionFieldsValue[string](section, "button_url")
+	image, _ := getSectionFieldsValue[string](section, "image")
+	subHeadline, _ := getSectionFieldsValue[string](section, "subheadline")
+
+	return HeroSection{
+		ButtonLabel: buttonLabel,
+		ButtonUrl:   buttonUrl,
+		Image:       image,
+
+		LandingPageSectionBase: LandingPageSectionBase{
+			SubHeadline:    subHeadline,
+			IsSet:          true,
+			Headline:       headline,
+			ScrollAnchorId: scrollAnchorId,
+		},
+	}
 }
 
 func processSEOMetadata(page ButterCMS.Page) SEOMetadata {
