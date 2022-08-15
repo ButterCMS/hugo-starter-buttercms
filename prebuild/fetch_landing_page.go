@@ -47,13 +47,26 @@ type FeaturesSection struct {
 	Features []Feature
 }
 
+type Testimonial struct {
+	Title string
+	Quote string
+	Name  string
+}
+
+type TestimonialsSection struct {
+	LandingPageSectionBase
+
+	Testimonials []Testimonial
+}
+
 type LandingPageFile struct {
 	SEOMetadata
 
-	HeroSection     HeroSection
-	AboutSection    ImageWithTextSection
-	TryItSection    ImageWithTextSection
-	FeaturesSection FeaturesSection
+	HeroSection         HeroSection
+	AboutSection        ImageWithTextSection
+	TryItSection        ImageWithTextSection
+	FeaturesSection     FeaturesSection
+	TestimonialsSection TestimonialsSection
 }
 
 func FetchLandingPages(pathToFiles string) {
@@ -88,8 +101,9 @@ func processLandingPage(pathToFile string, page ButterCMS.Page) {
 				data.TryItSection = processImageWithTextSection(section, headline, scrollAnchorId)
 			case "features":
 				data.FeaturesSection = processFeaturesSection(section, headline, scrollAnchorId)
+			case "testimonials":
+				data.TestimonialsSection = processTestimonialsSection(section, headline, scrollAnchorId)
 			}
-
 		}
 	}
 
@@ -163,6 +177,37 @@ func processFeaturesSection(section map[string]interface{}, headline string, scr
 		},
 
 		Features: features,
+	}
+}
+
+func processTestimonialsSection(section map[string]interface{}, headline string, scrollAnchorId string) TestimonialsSection {
+	unparsedTestimonials, _ := getSectionFieldsValue[[]interface{}](section, "testimonial")
+
+	testimonials := []Testimonial{}
+	for _, unparsedTestimonial := range unparsedTestimonials {
+		typedTestimonial := unparsedTestimonial.(map[string]interface{})
+
+		title, _ := GetValue[string](typedTestimonial, "title")
+		quote, _ := GetValue[string](typedTestimonial, "quote")
+		name, _ := GetValue[string](typedTestimonial, "name")
+
+		testimonial := Testimonial{
+			Title: title,
+			Quote: quote,
+			Name:  name,
+		}
+
+		testimonials = append(testimonials, testimonial)
+	}
+
+	return TestimonialsSection{
+		LandingPageSectionBase: LandingPageSectionBase{
+			Headline:       headline,
+			ScrollAnchorId: scrollAnchorId,
+			IsSet:          true,
+		},
+
+		Testimonials: testimonials,
 	}
 }
 
