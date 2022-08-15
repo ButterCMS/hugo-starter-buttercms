@@ -13,21 +13,18 @@ import (
 
 const fileMode = 0777
 
-const dataPath = "./remote/data"
-
-const contentPath = "./remote/content"
-
-func fetch() {
+func fetch(remoteFolder string) {
 	ButterCMS.SetAuthToken(os.Getenv("BUTTERCMS_API_TOKEN"))
+
+	dataPath := filepath.Join(remoteFolder, "data")
+	contentPath := filepath.Join(remoteFolder, "content")
 
 	createFolderIfNotExists(dataPath)
 	createFolderIfNotExists(contentPath)
 
-	CreateHeaderFile(filepath.Join(dataPath, "header.json"))
+	FetchHeader(filepath.Join(dataPath, "header.json"), "#home")
 
-	landingPagesPath := filepath.Join(contentPath, "landing_page")
-	createFolderIfNotExists(landingPagesPath)
-	CreateLandingPagesFiles(landingPagesPath)
+	FetchLandingPages(contentPath)
 }
 
 func createFolderIfNotExists(path string) {

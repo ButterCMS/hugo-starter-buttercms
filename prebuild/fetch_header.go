@@ -14,9 +14,9 @@ type HeaderFile struct {
 	NavItems             []NavItem
 }
 
-func CreateHeaderFile(path string) {
+func FetchHeader(path string, defaultActiveItemUrl string) {
 	data := HeaderFile{
-		DefaultActiveItemUrl: "#home",
+		DefaultActiveItemUrl: defaultActiveItemUrl,
 		NavItems:             getNavigationItems(),
 	}
 

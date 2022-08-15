@@ -36,20 +36,20 @@ type LandingPageFile struct {
 	HeroSection HeroSection
 }
 
-func CreateLandingPagesFiles(pathToFiles string) {
+func FetchLandingPages(pathToFiles string) {
 	pageType := "landing-page"
 
 	response, pageFetchingErr := ButterCMS.GetPages(pageType, map[string]string{})
 	HandleErr(pageFetchingErr)
 
 	for _, page := range response.PageList {
-		createLandingPageFile(pathToFiles, page)
+		processLandingPage(pathToFiles, page)
 	}
 }
 
-func createLandingPageFile(pathToFile string, page ButterCMS.Page) {
+func processLandingPage(pathToFile string, page ButterCMS.Page) {
 	data := LandingPageFile{
-		SEOMetadata: parseSEOMetadata(page),
+		SEOMetadata: processSEOMetadata(page),
 	}
 
 	if body, err := GetValue[[]interface{}](page.Fields, "body"); err == nil {
@@ -79,8 +79,6 @@ func createLandingPageFile(pathToFile string, page ButterCMS.Page) {
 		}
 	}
 
-	// fmt.Printf("\n page: %v", data)
-
 	if defaultLandingPageSlug == page.Slug {
 		CreateFile(data, filepath.Join(pathToFile, "_index.md"))
 	}
@@ -88,7 +86,7 @@ func createLandingPageFile(pathToFile string, page ButterCMS.Page) {
 	CreateFile(data, filepath.Join(pathToFile, fmt.Sprintf("%s.md", page.Slug)))
 }
 
-func parseSEOMetadata(page ButterCMS.Page) SEOMetadata {
+func processSEOMetadata(page ButterCMS.Page) SEOMetadata {
 	result := SEOMetadata{}
 
 	if seo, err := GetValue[map[string]interface{}](page.Fields, "seo"); err == nil {

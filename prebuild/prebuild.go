@@ -7,5 +7,5 @@ import (
 func main() {
 	godotenv.Load()
 
-	fetch()
+	fetch("./remote")
 }
