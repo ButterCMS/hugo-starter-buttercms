@@ -35,12 +35,25 @@ type SEOMetadata struct {
 	Description string
 }
 
+type Feature struct {
+	Headline    string
+	Icon        string
+	Description string
+}
+
+type FeaturesSection struct {
+	LandingPageSectionBase
+
+	Features []Feature
+}
+
 type LandingPageFile struct {
 	SEOMetadata
 
-	HeroSection  HeroSection
-	AboutSection ImageWithTextSection
-	TryIt        ImageWithTextSection
+	HeroSection     HeroSection
+	AboutSection    ImageWithTextSection
+	TryItSection    ImageWithTextSection
+	FeaturesSection FeaturesSection
 }
 
 func FetchLandingPages(pathToFiles string) {
@@ -66,14 +79,15 @@ func processLandingPage(pathToFile string, page ButterCMS.Page) {
 			scrollAnchorId, _ := getSectionFieldsValue[string](section, "scroll_anchor_id")
 			headline, _ := getSectionFieldsValue[string](section, "headline")
 
-			fmt.Printf("\n%s", scrollAnchorId)
 			switch scrollAnchorId {
 			case "home":
 				data.HeroSection = processHeroSection(section, headline, scrollAnchorId)
 			case "about":
 				data.AboutSection = processImageWithTextSection(section, headline, scrollAnchorId)
 			case "tryit":
-				data.TryIt = processImageWithTextSection(section, headline, scrollAnchorId)
+				data.TryItSection = processImageWithTextSection(section, headline, scrollAnchorId)
+			case "features":
+				data.FeaturesSection = processFeaturesSection(section, headline, scrollAnchorId)
 			}
 
 		}
@@ -115,6 +129,40 @@ func processHeroSection(section map[string]interface{}, headline string, scrollA
 			Headline:       headline,
 			ScrollAnchorId: scrollAnchorId,
 		},
+	}
+}
+
+func processFeaturesSection(section map[string]interface{}, headline string, scrollAnchorId string) FeaturesSection {
+	unparsedFeatures, _ := getSectionFieldsValue[[]interface{}](section, "features")
+
+	features := []Feature{}
+	for _, unparsedFeature := range unparsedFeatures {
+		typedFeature := unparsedFeature.(map[string]interface{})
+
+		icon, _ := getSectionFieldsValue[string](typedFeature, "icon")
+		description, _ := getSectionFieldsValue[string](typedFeature, "description")
+		headline, _ := getSectionFieldsValue[string](typedFeature, "headline")
+
+		feature := Feature{
+			Icon:        icon,
+			Description: description,
+			Headline:    headline,
+		}
+
+		features = append(features, feature)
+	}
+
+	subHeadline, _ := getSectionFieldsValue[string](section, "subheadline")
+
+	return FeaturesSection{
+		LandingPageSectionBase: LandingPageSectionBase{
+			Headline:       headline,
+			ScrollAnchorId: scrollAnchorId,
+			SubHeadline:    subHeadline,
+			IsSet:          true,
+		},
+
+		Features: features,
 	}
 }
 
