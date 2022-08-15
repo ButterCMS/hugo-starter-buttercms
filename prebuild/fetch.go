@@ -23,7 +23,7 @@ func fetch(remoteFolder string) {
 	createFolderIfNotExists(contentPath)
 
 	FetchHeader(filepath.Join(dataPath, "header.json"), "#home")
-
+	FetchCategories(filepath.Join(dataPath, "categories.json"))
 	FetchLandingPages(contentPath)
 }
 
