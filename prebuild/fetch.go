@@ -24,6 +24,7 @@ func fetch(remoteFolder string) {
 
 	FetchHeader(filepath.Join(dataPath, "header.json"), "#home")
 	FetchCategories(filepath.Join(dataPath, "categories.json"))
+	FetchTags(filepath.Join(dataPath, "tags.json"))
 	FetchLandingPages(contentPath)
 }
 
