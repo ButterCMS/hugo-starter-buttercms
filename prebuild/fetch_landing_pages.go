@@ -153,9 +153,9 @@ func processFeaturesSection(section map[string]interface{}, headline string, scr
 	for _, unparsedFeature := range unparsedFeatures {
 		typedFeature := unparsedFeature.(map[string]interface{})
 
-		icon, _ := getSectionFieldsValue[string](typedFeature, "icon")
-		description, _ := getSectionFieldsValue[string](typedFeature, "description")
-		headline, _ := getSectionFieldsValue[string](typedFeature, "headline")
+		icon, _ := GetValue[string](typedFeature, "icon")
+		description, _ := GetValue[string](typedFeature, "description")
+		headline, _ := GetValue[string](typedFeature, "headline")
 
 		feature := Feature{
 			Icon:        icon,

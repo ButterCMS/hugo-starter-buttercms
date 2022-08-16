@@ -6,6 +6,14 @@
   {{ partial "landing_page/image_with_text_section.html" .Params.AboutSection }}
 {{ end }}
 
+{{ if .Params.FeaturesSection.IsSet }}
+  {{ partial "landing_page/features_section.html" .Params.FeaturesSection }}
+{{ end }}
+
 {{ if .Params.TryitSection.IsSet }}
   {{ partial "landing_page/image_with_text_section.html" .Params.TryitSection }}
+{{ end }}
+
+{{ if .Params.TestimonialsSection.IsSet }}
+  {{ partial "landing_page/testimonials_section.html" .Params.TestimonialsSection }}
 {{ end }}
