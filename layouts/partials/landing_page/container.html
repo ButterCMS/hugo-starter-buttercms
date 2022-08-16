@@ -1,3 +1,11 @@
 {{ if .Params.HeroSection.IsSet }}
   {{ partial "landing_page/hero_section.html" .Params.HeroSection }}
 {{ end }}
+
+{{ if .Params.AboutSection.IsSet }}
+  {{ partial "landing_page/image_with_text_section.html" .Params.AboutSection }}
+{{ end }}
+
+{{ if .Params.TryitSection.IsSet }}
+  {{ partial "landing_page/image_with_text_section.html" .Params.TryitSection }}
+{{ end }}
