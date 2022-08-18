@@ -17,3 +17,5 @@
 {{ if .Params.TestimonialsSection.IsSet }}
   {{ partial "landing_page/testimonials_section.html" .Params.TestimonialsSection }}
 {{ end }}
+
+{{ partial "blog/section.html" (where (where .Site.Pages "Section" "blog") "Slug" "!=" "") }}

@@ -1,0 +1,21 @@
+<div class="col-lg-4 col-md-8 col-sm-10">
+  <div class="single-blog">
+      {{ if isset .Params "featured_image" }}
+        <div class="blog-header">
+            <img class="img-fluid"
+                  loading="lazy"
+                  src="{{ .Params.featured_image }}"
+                  alt="{{ .Params.featured_image_alt }}">
+        </div>
+      {{ end }}
+      <div class="blog-body">
+          <h5 class="package-name">
+            <a href="blog/{{ .Slug }}">{{ .Title }}</a>
+          </h5>
+          <p>{{ .Summary }}</p>
+      </div>
+      <div class="blog-footer">
+          <a href="blog/{{ .Slug }}" class="main-btn btn-hover">Read More</a>
+      </div>
+  </div>
+</div>
