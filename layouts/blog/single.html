@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+{{ partial "blog/navigation.html" (dict "Title" .Title "Text" .Title "IncludeBlog" true) }}
+
+<section class="blog-post">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-12 col-12">
+              <div class="single-post">
+                  {{ partial "blog/post/preamble.html" .Params }}
+
+                  <div class="single-post-body">
+                    {{ safeHTML .Params.body }}
+                  </div>
+              </div>
+          </div>
+
+          <aside class="col-12 col-lg-4">
+            {{ partial "blog/search_filter.html" }}
+
+            {{ partial "blog/categories_filter.html" $.Site.Data.categories }}
+          </aside>
+      </div>
+  </div>
+</section>
+
+{{ end }}
