@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="{{ .Page.Description }}" />
 
-    {{/*  TODO  */}}
-    {{/*  {{ if isset .Page "Image" }}
-      <meta name="image" content="{{ .Page.Image }}" />
-    {{ end }}  */}}
+    {{ if ne .Params.ImageMeta nil }}
+      {{ if ne .Params.ImageMeta "" }}
+        <meta name="image" content="{{ .Params.ImageMeta }}" />
+      {{ end }}
+    {{ end }}
 
     <title>{{ .Page.Title }}</title>
 
@@ -23,7 +24,7 @@
     {{ partial "header.html" $.Site.Data.header }}
 
     {{ block "main" . }}
-    {{ .Content }}
+      {{ .Content }}
     {{ end}}
 
     {{ partial "footer.html" $.Site.Data.header }}

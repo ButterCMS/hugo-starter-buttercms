@@ -11,6 +11,7 @@ type BlogPostFile struct {
 	ButterCMS.Post
 
 	CategoriesSlugs []string
+	ImageMeta       string
 }
 
 func FetchBlogPosts(pathToFiles string) {
@@ -28,6 +29,10 @@ func FetchBlogPosts(pathToFiles string) {
 		data := BlogPostFile{
 			Post:            post,
 			CategoriesSlugs: categoriesSlugs,
+		}
+
+		if post.FeaturedImageAlt != "" {
+			data.ImageMeta = post.FeaturedImageAlt
 		}
 
 		CreateFile(data, filepath.Join(pathToFiles, fmt.Sprintf("%s.md", post.Slug)))

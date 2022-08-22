@@ -1,5 +1,7 @@
 {{ define "scripts" }}
-  <script src="/js/client-slider.js"></script>
+  {{ if .Params.TestimonialsSection.IsSet }}
+    <script src="/js/client-slider.js"></script>
+  {{ end }}
 {{ end }}
 
 <section id="{{ .ScrollAnchorId }}" class="testimonial-section mt-100">
