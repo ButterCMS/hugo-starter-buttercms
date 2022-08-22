@@ -1,0 +1,35 @@
+<section class="blog-posts">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-12 col-lg-8 blog-roll-cards">
+              <div class="row">
+                  {{ range first 10 .Items }}
+                      <div class="col-12 col-lg-6">
+                          <div class="blog-roll-card">
+                              {{ partial "blog/post/preamble.html" .Params }}
+
+                              <div class="blog-roll-card-body">
+                                  <p>{{ .Summary }}</p>
+                              </div>
+                              <div class="blog-roll-card-footer text-center">
+                                  <a href="/blog/{{ .Slug }}" class="main-btn btn-hover">Read More</a>
+                              </div>
+                          </div>
+                      </div>
+                  {{ end }}
+                  {{ if ( eq ( len .Items ) 0 ) }}
+                    <p>
+                        No blog posts found matching this query.
+                    </p>
+                  {{ end }}
+              </div>
+          </div>
+
+          <aside class="col-12 col-lg-4">
+              {{ partial "blog/search_filter.html" }}
+
+              {{ partial "blog/categories_filter.html" .Site.Data.categories }}
+          </aside>
+      </div>
+  </div>
+</section>

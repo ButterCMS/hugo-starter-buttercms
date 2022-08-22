@@ -7,11 +7,29 @@ import (
 	ButterCMS "github.com/ButterCMS/buttercms-go"
 )
 
+type BlogPostFile struct {
+	ButterCMS.Post
+
+	CategoriesSlugs []string
+}
+
 func FetchBlogPosts(pathToFiles string) {
 	response, err := ButterCMS.GetPosts(map[string]string{})
 	HandleErr(err)
 
 	for _, post := range response.PostList {
-		CreateFile(post, filepath.Join(pathToFiles, fmt.Sprintf("%s.md", post.Slug)))
+		post.URL = "" // Conflict with Hugo URL definition in content file. + not used at all
+
+		categoriesSlugs := []string{}
+		for _, category := range post.CategoryList {
+			categoriesSlugs = append(categoriesSlugs, category.Slug)
+		}
+
+		data := BlogPostFile{
+			Post:            post,
+			CategoriesSlugs: categoriesSlugs,
+		}
+
+		CreateFile(data, filepath.Join(pathToFiles, fmt.Sprintf("%s.md", post.Slug)))
 	}
 }

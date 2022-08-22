@@ -18,17 +18,19 @@ func fetch(remoteFolder string) {
 
 	dataPath := filepath.Join(remoteFolder, "data")
 	contentPath := filepath.Join(remoteFolder, "content")
+	blogPath := filepath.Join(contentPath, "blog")
+	categoryPath := filepath.Join(blogPath, "category")
 
 	createFolderIfNotExists(dataPath)
 	createFolderIfNotExists(contentPath)
+	createFolderIfNotExists(blogPath)
+	createFolderIfNotExists(categoryPath)
 
 	FetchHeader(filepath.Join(dataPath, "header.json"), "#home")
-	FetchCategories(filepath.Join(dataPath, "categories.json"))
+	FetchCategories(filepath.Join(dataPath, "categories.json"), categoryPath)
 	FetchTags(filepath.Join(dataPath, "tags.json"))
 	FetchLandingPages(contentPath)
 
-	blogPath := filepath.Join(contentPath, "blog")
-	createFolderIfNotExists(blogPath)
 	FetchBlogPosts(blogPath)
 }
 

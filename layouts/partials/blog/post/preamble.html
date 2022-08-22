@@ -11,11 +11,13 @@
         <li> 
             <a href="javascript:void(0)"><img src="{{ $authorProfilePicture }}" alt="#">{{ .author.first_name }} {{ .author.last_name }}</a>
         </li>
-        <li>
-            <a href="javascript:void(0)">
-                <i class="lni lni-calendar"></i> {{ time.Format "01/01/2006, 15:04:05" .published }}
-            </a>
-        </li>
+        {{ if isset . "published" }}
+          <li>
+              <a href="javascript:void(0)">
+                  <i class="lni lni-calendar"></i> {{ time.Format "01/01/2006, 15:04:05" .published }}
+              </a>
+          </li>
+        {{ end }}
         <li>
             {{ range .tags }}
               <a href="/blog/tag/{{ .slug }}"><i class="lni lni-tag"></i>{{ .name }}</a>
