@@ -22,11 +22,6 @@
 
     {{ partial "header.html" $.Site.Data.header }}
 
-    {{/*  TODO: remove  */}}
-    {{/*  {{ range (where .Site.Pages "Slug" "!=" nil) }}
-      {{ printf "%v | " .Title }}
-    {{ end }}  */}}
-
     {{ block "main" . }}
     {{ .Content }}
     {{ end}}

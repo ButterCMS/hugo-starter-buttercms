@@ -14,7 +14,12 @@ import (
 const fileMode = 0777
 
 func fetch(remoteFolder string) {
-	ButterCMS.SetAuthToken(os.Getenv("BUTTERCMS_API_TOKEN"))
+	apiKey := os.Getenv("BUTTERCMS_API_TOKEN")
+	if apiKey == "" {
+		HandleErr(errors.New("BUTTERCMS_API_TOKEN env is not set. Get your free API key on https://buttercms.com/join/"))
+	}
+
+	ButterCMS.SetAuthToken(apiKey)
 
 	dataPath := filepath.Join(remoteFolder, "data")
 	contentPath := filepath.Join(remoteFolder, "content")
