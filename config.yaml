@@ -1,4 +1,4 @@
-baseURL: https://buttercms.com
+baseURL: /
 languageCode: en-us
 title: Hugo ButterCMS starter
 caches:
