@@ -11,6 +11,7 @@ type BlogPostFile struct {
 	ButterCMS.Post
 
 	CategoriesSlugs []string
+	TagsSlugs       []string
 	ImageMeta       string
 }
 
@@ -26,9 +27,15 @@ func FetchBlogPosts(pathToFiles string) {
 			categoriesSlugs = append(categoriesSlugs, category.Slug)
 		}
 
+		tagsSlugs := []string{}
+		for _, tag := range post.TagList {
+			tagsSlugs = append(tagsSlugs, tag.Slug)
+		}
+
 		data := BlogPostFile{
 			Post:            post,
 			CategoriesSlugs: categoriesSlugs,
+			TagsSlugs:       tagsSlugs,
 		}
 
 		if post.FeaturedImageAlt != "" {
