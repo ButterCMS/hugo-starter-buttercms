@@ -27,9 +27,7 @@ jobs:
         env:
           BUTTERCMS_API_TOKEN: ${{ secrets.BUTTERCMS_API_TOKEN }}
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'Fetch remote data'
+      - uses: int128/update-generated-files-action@v2
 
 
       # - name: Build
