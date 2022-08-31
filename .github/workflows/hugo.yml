@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-go@v3
 
       - name: Fetch Remote data
-        run: go run github.com/ButterCMS/hugo-starter-buttercms/prebuild
+        run: go run github.com/ButterCMS/hugo-starter-buttercms/prebuild && cd remote
         env:
           BUTTERCMS_API_TOKEN: ${{ secrets.BUTTERCMS_API_TOKEN }}
 
