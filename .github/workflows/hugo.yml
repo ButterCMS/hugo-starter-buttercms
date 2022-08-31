@@ -17,10 +17,11 @@ jobs:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Setup Go
+        uses: actions/setup-go@v3
 
       - name: Fetch Remote data
-        uses: actions/setup-go@v3
-        run: go run github.com/ButterCMS/hugo-starter-buttercms/prebuild && cd remote
+        run: go run github.com/ButterCMS/hugo-starter-buttercms/prebuild
         env:
           BUTTERCMS_API_TOKEN: ${{ secrets.BUTTERCMS_API_TOKEN }}
 
