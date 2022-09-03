@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main  # Set a branch to deploy
-  pull_request:
 
 jobs:
   deploy:
@@ -27,11 +26,10 @@ jobs:
         env:
           BUTTERCMS_API_TOKEN: ${{ secrets.BUTTERCMS_API_TOKEN }}
 
-      - uses: int128/update-generated-files-action@v2
+      - uses: EndBug/add-and-commit@v9 
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          title: Fetch Remote data
-          ref: ${{ github.head_ref }}
+          add: 'remote'
+          message: 'Fetch remote data'
 
       # - name: Build
       #   run: hugo
