@@ -30,6 +30,7 @@ jobs:
       - uses: int128/update-generated-files-action@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.head_ref }}
 
 
       # - name: Build
