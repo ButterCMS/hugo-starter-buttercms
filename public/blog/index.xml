@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Hugo ButterCMS starter</title>
+    <link>/blog/</link>
+    <description>Recent content in Blogs on Hugo ButterCMS starter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Jan 2022 16:21:00 +0000</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog Post With Featured Image, No Summary</title>
+      <link>/blog/blog-post-with-featured-image-no-summary/</link>
+      <pubDate>Thu, 13 Jan 2022 16:21:00 +0000</pubDate>
+      
+      <guid>/blog/blog-post-with-featured-image-no-summary/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt vehicula mauris, et euismod neque ullamcorper vitae. Nullam lobortis lectus a nibh vestibulum rutrum. Quisque varius lorem nulla, ut dignissim arcu dignissim eu. Nullam ultrices, nisl at dictum ultricies, massa urna finibus ex, at accumsan mi tortor sed risus. Praesent &amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Blog Post, No Featured Image</title>
+      <link>/blog/blog-post-no-featured-image/</link>
+      <pubDate>Thu, 13 Jan 2022 16:13:00 +0000</pubDate>
+      
+      <guid>/blog/blog-post-no-featured-image/</guid>
+      <description>Summary for Blog Post, No Featured image</description>
+    </item>
+    
+    <item>
+      <title>Example Post</title>
+      <link>/blog/example-post/</link>
+      <pubDate>Thu, 13 Jan 2022 16:09:00 +0000</pubDate>
+      
+      <guid>/blog/example-post/</guid>
+      <description>This is an example blog post. Pretty neat huh?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/category/development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/category/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/category/example-category/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/category/example-category/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/category/in-development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/category/in-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/category/in-production/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/category/in-production/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/tag/development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tag/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/tag/example-tag/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tag/example-tag/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/tag/tags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tag/tags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/tag/testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tag/testing/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

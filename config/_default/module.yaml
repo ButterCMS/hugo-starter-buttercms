@@ -1,0 +1,9 @@
+mounts:
+  - source: content
+    target: content
+  - source: data
+    target: data
+  - source: remote/data
+    target: data
+  - source: remote/content
+    target: content

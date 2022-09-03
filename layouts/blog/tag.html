@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+{{ partial "blog/navigation.html" (dict "Title" "Blog Posts by Tag" "Text" (printf "Tag: %s" .Page.Params.Name) "IncludeBlog" true) }}
+
+{{ $tagPosts := slice }}
+{{ range $post := where .Site.Pages "Section" "blog" }}
+  {{ if ne $post.Params.TagsSlugs nil }}  
+    {{ if in $post.Params.TagsSlugs $.Page.Params.Slug }}
+      {{ $tagPosts = $tagPosts | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ partial "blog/list.html" (dict "Items" $tagPosts "Site" $.Site) }}
+
+{{ end }}
