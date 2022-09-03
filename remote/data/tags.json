@@ -1,0 +1,18 @@
+[
+ {
+  "Name": "development",
+  "Slug": "development"
+ },
+ {
+  "Name": "Example Tag",
+  "Slug": "example-tag"
+ },
+ {
+  "Name": "tags",
+  "Slug": "tags"
+ },
+ {
+  "Name": "testing",
+  "Slug": "testing"
+ }
+]
