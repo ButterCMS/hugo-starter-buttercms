@@ -31,6 +31,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Fetch Remote data
+          ref: ${{ github.head_ref }}
 
       # - name: Build
       #   run: hugo
