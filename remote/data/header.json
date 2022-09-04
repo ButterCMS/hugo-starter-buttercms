@@ -1,0 +1,29 @@
+{
+ "DefaultActiveItemUrl": "#home",
+ "NavItems": [
+  {
+   "Url": "#home",
+   "Label": "Home"
+  },
+  {
+   "Url": "#about",
+   "Label": "About"
+  },
+  {
+   "Url": "#features",
+   "Label": "Features"
+  },
+  {
+   "Url": "#tryit",
+   "Label": "Try It"
+  },
+  {
+   "Url": "#testimonials",
+   "Label": "Testimonials"
+  },
+  {
+   "Url": "#blog",
+   "Label": "Blog"
+  }
+ ]
+}

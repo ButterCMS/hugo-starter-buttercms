@@ -1,6 +1,13 @@
 baseURL: /
 languageCode: en-us
 title: Hugo ButterCMS starter
-caches:
-  getresource:
-    maxAge: 0
+module:
+  mounts:
+    - source: content
+      target: content
+    - source: data
+      target: data
+    - source: remote/data
+      target: data
+    - source: remote/content
+      target: content

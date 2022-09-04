@@ -1,0 +1,18 @@
+[
+ {
+  "Name": "Example Category",
+  "Slug": "example-category"
+ },
+ {
+  "Name": "development",
+  "Slug": "development"
+ },
+ {
+  "Name": "in development",
+  "Slug": "in-development"
+ },
+ {
+  "Name": "in production",
+  "Slug": "in-production"
+ }
+]
