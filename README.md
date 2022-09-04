@@ -54,13 +54,6 @@ Our starter app can be deployed to Netlify with the click of a button:
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ButterCMS/hugo-starter-buttercms)
 
-### 7.) Previewing and Draft Changes
+# Fetch Data in Github Action
 
-Your starter app allows you to preview draft changes made to content in your
-ButterCMS.com account by default; to see draft changes, add `PREVIEW_DRAFTS=true` env variable:
-
-```bash
-$ echo 'PREVIEW_DRAFTS=true' >> .env
-```
-
-You have to repeat step 3 to fetch data again.
+There is Github Action Job to fetch content from ButterCMS (see [buttercms.yml](./.github/workflows/buttercms.yml)). It is triggered by pushing into the `main` branch. Github secret `BUTTERCMS_API_TOKEN` has to be set.

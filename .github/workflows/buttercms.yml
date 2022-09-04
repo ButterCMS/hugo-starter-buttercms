@@ -1,4 +1,4 @@
-name: GitHub Pages
+name: Fetch ButterCMS content
 
 on:
   push:
