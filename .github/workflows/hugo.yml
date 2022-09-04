@@ -13,8 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: true 
+          fetch-depth: 0   
 
       - name: Setup Go
         uses: actions/setup-go@v3
@@ -30,14 +30,3 @@ jobs:
         with:
           add: 'remote'
           message: 'Fetch remote data'
-
-      # - name: Build
-      #   run: hugo
-
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   # if: ${{ github.ref == 'refs/heads/main' }}
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./public
-
