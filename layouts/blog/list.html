@@ -1,0 +1,7 @@
+{{ define "main" }}
+
+{{ partial "blog/navigation.html" (dict "Title" "All Blog Posts" "Text" "All blog posts" "IncludeBlog" false) }}
+
+{{ partial "blog/list.html" (dict "Items" (where (where (where (where .Site.Pages "Section" "blog") ".Params.layout" "!=" "category") ".Params.layout" "!=" "tag") "Slug" "!=" "") "Site" $.Site) }}
+
+{{ end }}

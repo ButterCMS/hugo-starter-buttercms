@@ -1,0 +1,33 @@
+{{ $authorProfilePicture := "/assets/images/placeholder.png" }}
+{{ if isset .author "profile_image" }}
+  {{ $authorProfilePicture = .author.profile_image }}
+{{ end }}
+
+<div class="blog-roll-card-meta">
+    <h2 class="blog-roll-card-header">
+        <a href="/blog/{{ .slug }}">{{ .title }}</a>
+    </h2>
+    <ul class="blog-roll-card-meta-info">
+        <li> 
+            <a href="javascript:void(0)"><img src="{{ $authorProfilePicture }}" alt="#">{{ .author.first_name }} {{ .author.last_name }}</a>
+        </li>
+        {{ if isset . "published" }}
+          <li>
+              <a href="javascript:void(0)">
+                  <i class="lni lni-calendar"></i> {{ time.Format "01/01/2006, 15:04:05" .published }}
+              </a>
+          </li>
+        {{ end }}
+        <li>
+            {{ range .tags }}
+              <a href="/blog/tag/{{ .slug }}"><i class="lni lni-tag"></i>{{ .name }}</a>
+            {{ end }}
+        </li>
+    </ul>
+</div>
+
+{{ if isset . "featured_image" }}
+  <div class="single-post-thumbnail">
+      <img src="{{ .featured_image }}" alt="{{ .featured_image_alt }}">
+  </div>
+{{ end }}

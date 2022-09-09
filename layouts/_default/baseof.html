@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ .Site.Title }}: {{ .Title }}</title>
-  <link rel="stylesheet" href="/main.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <h1>{{ .Site.Title }}: {{ .Title }}</h1>
-  <ul id="navbar">
-  {{ $currentPage := . }}
-  {{ range .Site.Menus.main }}
-    <li class="{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{ end }}">
-      <a class="pane" href="{{ .URL }}">{{ .Name }}</a>
-    </li>
-  {{ end }}
-  </ul>
-  {{ block "main" . }}
-  {{ .Content }}
-  {{ end}}
-  <small>Copyright 2019 Yourname</small>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ .Page.Description }}" />
+
+    {{ if ne .Params.ImageMeta nil }}
+      {{ if ne .Params.ImageMeta "" }}
+        <meta name="image" content="{{ .Params.ImageMeta }}" />
+      {{ end }}
+    {{ end }}
+
+    <title>{{ .Page.Title }}</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://buttercms.com/static/v2/images/favicon.png" />
+
+    {{ partial "head/styles.html" . }}
+  </head>
+  <body>
+    {{ partial "preloader.html" . }}
+
+    {{ partial "header.html" $.Site.Data.header }}
+
+    {{ block "main" . }}
+      {{ .Content }}
+    {{ end}}
+
+    {{ partial "footer.html" $.Site.Data.header }}
+
+    <a href="#" class="scroll-top btn-hover">
+      <i class="lni lni-chevron-up"></i>
+    </a>
+
+    {{ partial "head/scripts.html" . }}
+    {{ block "scripts" . }}{{ end }}
+  </body>
 </html>

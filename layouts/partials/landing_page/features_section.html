@@ -1,0 +1,30 @@
+<section id="{{ .ScrollAnchorId }}" class="feature-section">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-5 col-md-10">
+              <div class="section-title mb-60">
+                  <h2 class="mb-20">{{ .Headline }}</h2>
+                  <p>{{ .SubHeadline }}</p>
+              </div>
+          </div>
+
+          <div class="col-lg-7">
+              <div class="row">
+                {{ range .Features }}
+                      <div class="col-lg-6 col-md-6">
+                          <div class="single-feature">
+                              <div class="feature-icon">
+                                  <img src="{{ .Icon }}"/>
+                              </div>
+                              <div class="feature-content">
+                                  <h4>{{ .Headline }}</h4>
+                                  <p>{{ .Description }}</p>
+                              </div>
+                          </div>
+                      </div>
+                {{ end }}
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
