@@ -1,9 +1,9 @@
 {
- "Title": "Sample Landing Page with Components",
- "Description": "Sample Landing Page with Componentss",
+ "Title": "Sample Landing Page with Components (Draft 7.28)",
+ "Description": "Sample Landing Page with Components",
  "HeroSection": {
   "ScrollAnchorId": "home",
-  "Headline": "Welcome to your ButterCMS Proof of Concept",
+  "Headline": "Welcome to your ButterCMS Proof of Concept (Draft 7.28)",
   "SubHeadline": "Use this app as your own proof of concept to explore Butter's capabilities for yourself. When you're ready, host this app and invite your team to try it out all well!",
   "IsSet": true,
   "ButtonUrl": "https://buttercms.com/pages/",
