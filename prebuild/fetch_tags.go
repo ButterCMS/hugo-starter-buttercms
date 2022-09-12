@@ -15,6 +15,9 @@ type Tag struct {
 type TagContentFile struct {
 	Tag
 
+	Title       string
+	Description string
+
 	Layout string `json:"layout"`
 }
 
@@ -31,7 +34,11 @@ func FetchTags(dataFilePath string, contentFolderPath string) {
 		data = append(data, tag)
 
 		CreateFile(TagContentFile{
-			Tag:    tag,
+			Tag: tag,
+
+			Title:       fmt.Sprintf("Sample Blog - tag: %s", tag.Name),
+			Description: fmt.Sprintf("Sample blog powered by ButterCMS, showing tag: %s", tag.Name),
+
 			Layout: "tag",
 		}, filepath.Join(contentFolderPath, fmt.Sprintf("%s.md", tag.Slug)))
 	}
