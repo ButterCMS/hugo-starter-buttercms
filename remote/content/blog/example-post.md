@@ -52,5 +52,6 @@
   "example-tag",
   "tags"
  ],
- "ImageMeta": ""
+ "ImageMeta": "https://cdn.buttercms.com/9kdxBs5RDulfoD6H3bmy",
+ "Description": "This is our example blog posts SEO optimized meta description."
 }

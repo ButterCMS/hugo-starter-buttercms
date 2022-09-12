@@ -44,5 +44,6 @@
   "in-production"
  ],
  "TagsSlugs": [],
- "ImageMeta": ""
+ "ImageMeta": "",
+ "Description": "Some metadata for blog post, no featured image goes here."
 }
