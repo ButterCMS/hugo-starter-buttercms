@@ -21,6 +21,8 @@ func fetch(remoteFolder string) {
 
 	ButterCMS.SetAuthToken(apiKey)
 
+	fmt.Println("Fetching of content started.")
+
 	dataPath := filepath.Join(remoteFolder, "data")
 	contentPath := filepath.Join(remoteFolder, "content")
 	blogPath := filepath.Join(contentPath, "blog")
@@ -39,6 +41,8 @@ func fetch(remoteFolder string) {
 	FetchLandingPages(contentPath)
 
 	FetchBlogPosts(blogPath)
+
+	fmt.Println("Fetching of content successfully finished.")
 }
 
 func createFolderIfNotExists(path string) {
@@ -59,7 +63,11 @@ func CreateFile(data any, path string) {
 
 func HandleErr(err error) {
 	if err != nil {
-		fmt.Println("Error fetching data: %w", err)
+		if err.Error() == "Unauthorized" {
+			fmt.Println("Your ButterCMS token is not valid. Please check your token and try again.")
+		} else {
+			fmt.Printf("Error fetching data: %v \n", err)
+		}
 
 		os.Exit(1)
 	}
