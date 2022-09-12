@@ -15,6 +15,9 @@ type Category struct {
 type CategoryContentFile struct {
 	Category
 
+	Title       string
+	Description string
+
 	Layout string `json:"layout"`
 }
 
@@ -31,8 +34,11 @@ func FetchCategories(dataFilepath string, contentFolderPath string) {
 		data = append(data, category)
 
 		CreateFile(CategoryContentFile{
-			Category: category,
-			Layout:   "category",
+			Category:    category,
+			Title:       fmt.Sprintf("Sample Blog - category: %s", category.Name),
+			Description: fmt.Sprintf("Sample blog powered by ButterCMS, showing category: %s", category.Name),
+
+			Layout: "category",
 		}, filepath.Join(contentFolderPath, fmt.Sprintf("%s.md", category.Slug)))
 	}
 
