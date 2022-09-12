@@ -1,5 +1,5 @@
-{{ $authorProfilePicture := "/assets/images/placeholder.png" }}
-{{ if isset .author "profile_image" }}
+{{ $authorProfilePicture := "/images/placeholder.png" }}
+{{ if ne .author.profile_image "" }}
   {{ $authorProfilePicture = .author.profile_image }}
 {{ end }}
 
