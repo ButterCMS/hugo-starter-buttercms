@@ -52,7 +52,7 @@ Our starter app can be deployed to Netlify with the click of a button:
 1. Create a Heroku account at https://app.netlify.com.
 2. Click the button below and fill in an app name. Then click "Deploy to Netlify".
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ButterCMS/hugo-starter-buttercms)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ButterCMS/hugo-starter-buttercms#SECRET_TOKEN=Your&Buttercms&token&here)
 
 # Fetch Data in Github Action
 
