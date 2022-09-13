@@ -1,0 +1,2 @@
+[template.environment]
+BUTTERCMS_API_TOKEN = "Your ButterCMS secret token here"
