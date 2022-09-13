@@ -6,3 +6,6 @@
 
 [template.environment]
 BUTTERCMS_API_TOKEN = "Your ButterCMS secret token here"
+
+[template.build]
+  command = "go run github.com/ButterCMS/hugo-starter-buttercms/prebuild && hugo"
