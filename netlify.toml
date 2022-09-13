@@ -1,2 +1,8 @@
+[build]
+  command = "go run github.com/ButterCMS/hugo-starter-buttercms/prebuild && hugo"
+
+[build.environment]
+  GO_VERSION = "1.18"
+
 [template.environment]
 BUTTERCMS_API_TOKEN = "Your ButterCMS secret token here"
