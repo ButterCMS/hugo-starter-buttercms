@@ -69,18 +69,18 @@ type LandingPageFile struct {
 	TestimonialsSection TestimonialsSection
 }
 
-func FetchLandingPages(pathToFiles string) {
+func FetchLandingPages(pathToRootFiles string, pathToSectionFiles string) {
 	pageType := "landing-page"
 
 	response, pageFetchingErr := ButterCMS.GetPages(pageType, map[string]string{})
 	HandleErr(pageFetchingErr)
 
 	for _, page := range response.PageList {
-		processLandingPage(pathToFiles, page)
+		processLandingPage(pathToRootFiles, pathToSectionFiles, page)
 	}
 }
 
-func processLandingPage(pathToFile string, page ButterCMS.Page) {
+func processLandingPage(pathToRootFiles string, pathToSectionFiles string, page ButterCMS.Page) {
 	data := LandingPageFile{
 		SEOMetadata: processSEOMetadata(page),
 	}
@@ -108,10 +108,12 @@ func processLandingPage(pathToFile string, page ButterCMS.Page) {
 	}
 
 	if defaultLandingPageSlug == page.Slug {
-		CreateFile(data, filepath.Join(pathToFile, "_index.md"))
+		CreateFile(data, filepath.Join(pathToRootFiles, "_index.md"))
+		CreateFile(data, filepath.Join(pathToSectionFiles, "_index.md"))
 	}
 
-	CreateFile(data, filepath.Join(pathToFile, fmt.Sprintf("%s.md", page.Slug)))
+	CreateFile(data, filepath.Join(pathToRootFiles, fmt.Sprintf("%s.md", page.Slug)))
+	CreateFile(data, filepath.Join(pathToSectionFiles, fmt.Sprintf("%s.md", page.Slug)))
 }
 
 func processImageWithTextSection(section map[string]interface{}, headline string, scrollAnchorId string) ImageWithTextSection {
