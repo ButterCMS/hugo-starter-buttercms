@@ -1,11 +1,11 @@
 # Hugo + ButterCMS Starter Project
 
-Live demo: [TBD: https://hugo-starter-buttercms-demo.netlify.com/](https://hugo-starter-buttercms-demo.netlify.com/) 
+Live demo: [https://hugo-starter-buttercms.netlify.com/](https://hugo-starter-buttercms.netlify.com/) 
 
 This Hugo starter project fully integrates with dynamic sample content from your ButterCMS account, including main menu, pages, blog posts, categories, and tags, and all with a beautiful, custom theme with already-implemented search functionality. All of the included sample content is automatically created in your account dashboard when you 
 [sign up for a free trial](https://buttercms.com/join/) of ButterCMS.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ButterCMS/hugo-starter-buttercms)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ButterCMS/hugo-starter-buttercms#BUTTERCMS_API_TOKEN=Your&Buttercms&token&here)
 
 
 ## 1) Installation
@@ -45,15 +45,11 @@ $ hugo server
 
 Congratulations! Your starter project is now live at: [http://localhost:1313/](http://localhost:1313/)
 
-### 6) Deploy on Heroku
+### 6) Deploy on Netlify
 
 Our starter app can be deployed to Netlify with the click of a button:
 
 1. Create a Heroku account at https://app.netlify.com.
 2. Click the button below and fill in an app name. Then click "Deploy to Netlify".
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ButterCMS/hugo-starter-buttercms#SECRET_TOKEN=Your&Buttercms&token&here)
-
-# Fetch Data in Github Action
-
-There is Github Action Job to fetch content from ButterCMS (see [buttercms.yml](./.github/workflows/buttercms.yml)). It is triggered by pushing into the `main` branch. Github secret `BUTTERCMS_API_TOKEN` has to be set.
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ButterCMS/hugo-starter-buttercms#BUTTERCMS_API_TOKEN=Your&Buttercms&token&here)
