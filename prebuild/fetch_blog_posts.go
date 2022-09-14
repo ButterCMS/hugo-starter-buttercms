@@ -13,6 +13,7 @@ type BlogPostFile struct {
 	CategoriesSlugs []string
 	TagsSlugs       []string
 	ImageMeta       string
+	Description     string
 }
 
 func FetchBlogPosts(pathToFiles string) {
@@ -36,10 +37,8 @@ func FetchBlogPosts(pathToFiles string) {
 			Post:            post,
 			CategoriesSlugs: categoriesSlugs,
 			TagsSlugs:       tagsSlugs,
-		}
-
-		if post.FeaturedImageAlt != "" {
-			data.ImageMeta = post.FeaturedImageAlt
+			Description:     post.MetaDescription,
+			ImageMeta:       post.FeaturedImage,
 		}
 
 		CreateFile(data, filepath.Join(pathToFiles, fmt.Sprintf("%s.md", post.Slug)))

@@ -50,5 +50,6 @@
   "development",
   "tags"
  ],
- "ImageMeta": "Some Alt text that should populate in the template"
+ "ImageMeta": "https://cdn.buttercms.com/0rtE5Z6vQhmXqo0iut0K",
+ "Description": "meta description for this blog post."
 }
