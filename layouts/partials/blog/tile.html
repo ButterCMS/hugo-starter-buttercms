@@ -1,6 +1,6 @@
 <div class="col-lg-4 col-md-8 col-sm-10">
   <div class="single-blog">
-      {{ if isset .Params "featured_image" }}
+      {{ if ne .Params.featured_image "" }}
         <div class="blog-header">
             <img class="img-fluid"
                   loading="lazy"

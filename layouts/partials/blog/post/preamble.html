@@ -26,7 +26,7 @@
     </ul>
 </div>
 
-{{ if isset . "featured_image" }}
+{{ if ne .featured_image "" }}
   <div class="single-post-thumbnail">
       <img src="{{ .featured_image }}" alt="{{ .featured_image_alt }}">
   </div>
