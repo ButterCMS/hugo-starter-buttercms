@@ -19,6 +19,11 @@ func fetch(remoteFolder string) {
 		HandleErr(errors.New("BUTTERCMS_API_TOKEN env is not set. Get your free API key on https://buttercms.com/join/"))
 	}
 
+	previewMode := os.Getenv("BUTTERCMS_PREVIEW")
+	if previewMode == "false" {
+		ButterCMS.SetPreviewMode(false)
+	}
+
 	ButterCMS.SetAuthToken(apiKey)
 
 	fmt.Println("Fetching of content started.")

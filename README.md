@@ -53,3 +53,7 @@ Our starter app can be deployed to Netlify with the click of a button:
 2. Click the button below and fill in an app name. Then click "Deploy to Netlify".
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ButterCMS/hugo-starter-buttercms#BUTTERCMS_API_TOKEN=Your_ButterCMS_Token_Here)
+
+### 7) Previewing Draft Changes
+
+By default, your starter project is set up to allow previewing of draft changes saved in your ButterCMS.com account. To disable this functionality, set the following value in your **.env** file: `BUTTERCMS_PREVIEW=false`.
