@@ -19,10 +19,14 @@ func fetch(remoteFolder string) {
 		HandleErr(errors.New("BUTTERCMS_API_TOKEN env is not set. Get your free API key on https://buttercms.com/join/"))
 	}
 
-	previewMode := os.Getenv("BUTTERCMS_PREVIEW")
-	if previewMode == "false" {
-		ButterCMS.SetPreviewMode(false)
+	previewModeEnv := os.Getenv("BUTTERCMS_PREVIEW")
+	previewMode := true
+	if previewModeEnv == "false" {
+		previewMode = false
 	}
+	ButterCMS.SetPreviewMode(previewMode)
+
+	fmt.Printf("Preview mode: %t\n", previewMode)
 
 	ButterCMS.SetAuthToken(apiKey)
 
@@ -34,6 +38,9 @@ func fetch(remoteFolder string) {
 	blogPath := filepath.Join(contentPath, "blog")
 	categoryPath := filepath.Join(blogPath, "category")
 	tagPath := filepath.Join(blogPath, "tag")
+
+	removeFolderRecursively(dataPath)
+	removeFolderRecursively(contentPath)
 
 	createFolderIfNotExists(dataPath)
 	createFolderIfNotExists(contentPath)
@@ -89,4 +96,11 @@ func GetValue[T any](input map[string]interface{}, name string) (T, error) {
 	}
 
 	return field, nil
+}
+
+func removeFolderRecursively(path string) {
+	err := os.RemoveAll(path)
+	if err != nil {
+		HandleErr(err)
+	}
 }
