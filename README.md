@@ -35,6 +35,8 @@ To fetch your ButterCMS content run:
 $ go run github.com/ButterCMS/hugo-starter-buttercms/prebuild
 ```
 
+*Because Hugo is a static site generator, you'll need to run this command for if you make changes to your Butter content and want to pull it into your app. For this reason, we recommend tapping into our webhook architecture, which will allow you to set up your deployed project to automatically show draft changes.*
+
 ### 5) Run Hugo Local Development Server
 
 To view the app in the browser, you'll need to run the local development server:
