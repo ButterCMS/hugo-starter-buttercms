@@ -3,6 +3,8 @@
 
 [build.environment]
   GO_VERSION = "1.22.2"
+  HUGO_VERSION = "0.147.0"
+  HUGO_ENV = "production"
 
 [template.environment]
 BUTTERCMS_API_TOKEN = "BUTTERCMS_API_TOKEN: Paste your ButterCMS secret token here"
