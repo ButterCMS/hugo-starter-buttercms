@@ -24,6 +24,9 @@ $ sudo apt install golang-go
 $ brew install go
 ```
 
+#### Windows
+Follow instructions from [the official website](https://go.dev/doc/install).
+
 ### Installing Hugo (0.120.4 or higher)
 
 **Ubuntu/Debian:**
@@ -36,6 +39,9 @@ $ sudo apt install hugo
 ```bash
 $ brew install hugo
 ```
+
+#### Windows
+Follow instructions from [the official website](https://gohugo.io/installation/windows/).
 
 ### Setting up the project
 
