@@ -18,6 +18,7 @@ First, install the required dependencies:
 ```bash
 $ sudo apt update
 $ sudo apt install golang-go
+```
 
 **macOS (using Homebrew):**
 ```bash
